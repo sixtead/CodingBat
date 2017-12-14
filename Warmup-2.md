@@ -67,5 +67,48 @@ public String stringSplosion(String str) {
 
 ## last2
 ```java
+public int last2(String str) {
+  int len = str.length();
+  int count = 0;
+  
+  if(len > 2) {
+    String subString = str.substring(len - 2, len);
+  
+    for(int i = 0; i < len - 2; i++) {
+      if(str.substring(i, i + 2).equals(subString)) count++;
+    }
+  }
+  
+  return count;
+}
+```
+
+## arrayCount9
+```java
+public int arrayCount9(int[] nums) {
+  int count = 0;
+  for(int n: nums) {
+    if(n == 9) count++;
+  }
+  return count;
+}
+```
+
+## arrayFront9
+```java
+public boolean arrayFront9(int[] nums) {
+  int count = 0;
+  int len = nums.length >= 4 ? 4 : nums.length;
+
+  for(int i = 0; i < len; i++) {
+    if(nums[i] == 9) count++;
+  }
+    
+  return count > 0;
+}
+```
+
+## array123
+```java
 
 ```
