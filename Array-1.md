@@ -140,3 +140,92 @@ public int[] biggerTwo(int[] a, int[] b) {
   }
 }
 ```
+
+## makeMiddle
+```java
+public int[] makeMiddle(int[] nums) {
+  int len = nums.length;
+  return new int[] {nums[len/2 - 1], nums[len/2]};
+}
+```
+
+## plusTwo
+```java
+public int[] plusTwo(int[] a, int[] b) {
+  return new int[] {a[0], a[1], b[0], b[1]};
+}
+```
+
+## swapEnds
+```java
+public int[] swapEnds(int[] nums) {
+  int len =  nums.length;
+  
+  if(len < 2) return nums;
+  
+  int tmp = nums[0];
+  nums[0] = nums[len-1];
+  nums[len-1] = tmp;
+  return nums;
+}
+```
+
+## midThree
+```java
+public int[] midThree(int[] nums) {
+  int len = nums.length;
+  return new int[] {nums[len/2 - 1], nums[len/2], nums[len/2 + 1]};
+}
+```
+
+## maxTriple
+```java
+public int maxTriple(int[] nums) {
+  int len = nums.length;
+  int max = nums[0];
+  
+  if(len > 1) {
+    int maxOfMiddleAndLast = Math.max(nums[len/2], nums[len - 1]);
+    max = max > maxOfMiddleAndLast ? max : maxOfMiddleAndLast;
+  }
+  
+  return max;
+}
+```
+
+## frontPiece
+```java
+public int[] frontPiece(int[] nums) {
+  if(nums.length < 2) return nums;
+  return new int[] {nums[0], nums[1]};
+}
+```
+
+## unlucky1
+```java
+public boolean unlucky1(int[] nums) {
+  if(nums.length < 2) return false;
+  return (nums[0] == 1 && nums[1] == 3 ||
+          nums[1] == 1 && nums[2] == 3 ||
+          nums[nums.length - 2] == 1 && nums[nums.length - 1] == 3);
+}
+```
+
+## make2
+```java
+public int[] make2(int[] a, int[] b) {
+  if(a.length == 0) return new int[] {b[0], b[1]};
+  if(a.length == 1) return new int[] {a[0], b[0]};
+  return new int[] {a[0], a[1]}; 
+}
+```
+
+## front11
+```java
+public int[] front11(int[] a, int[] b) {
+  if(a.length == 0 && b.length == 0) return a;
+  if(a.length == 0) return new int[] {b[0]};
+  if(b.length == 0) return new int[] {a[0]};
+  return new int[] {a[0], b[0]};
+}
+```
