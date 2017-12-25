@@ -184,5 +184,64 @@ public boolean lessBy10(int a, int b, int c) {
 
 ## withoutDoubles
 ```java
+public int withoutDoubles(int die1, int die2, boolean noDoubles) {
+  int sum = noDoubles && die1 == die2 ? die1 + die2 + 1 : die1 + die2;
+  return sum == 13 ? 7 : sum;
+}
+```
 
+## maxMod5
+```java
+public int maxMod5(int a, int b) {
+  if(a == b) return 0;
+  if(a % 5 == b % 5) return Math.min(a, b);
+  return Math.max(a, b);
+}
+```
+
+## redTicket
+```java
+public int redTicket(int a, int b, int c) {
+  if(a == 2 && b == 2 && c == 2) return 10;
+  if(a == b && b == c) return 5;
+  if(a != b && a != c) return 1;
+  return 0;
+}
+```
+
+## greenTicket
+```java
+public int greenTicket(int a, int b, int c) {
+  if(a == b && b == c) return 20;
+  if(a == b || b == c || a == c) return 10;
+  return 0;
+}
+```
+
+## blueTicket
+```java
+public int blueTicket(int a, int b, int c) {
+  int ab = a + b;
+  int bc = b + c;
+  int ac = a + c;
+  if(ab == 10 || bc == 10 || ac == 10) return 10;
+  if(ab == bc + 10 || ab == ac + 10) return 5;
+  return 0;
+}
+```
+
+## shareDigit
+```java
+public boolean shareDigit(int a, int b) {
+  return (a / 10 == b / 10) || (a % 10 == b % 10) ||
+          (a / 10 == b % 10) || (a % 10 == b /10);
+}
+```
+
+## sumLimit
+```java
+public int sumLimit(int a, int b) {
+  int sum = a + b;
+  return String.valueOf(sum).length() > String.valueOf(a).length() ? a : sum;
+}
 ```
