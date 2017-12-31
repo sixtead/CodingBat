@@ -1,4 +1,4 @@
-# Warmup - 1
+# Warmup-1
 
 ## sleepIn
 ```java

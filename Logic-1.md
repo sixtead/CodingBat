@@ -1,3 +1,5 @@
+# Logic-1
+
 ## cigarParty
 ```java
 public boolean cigarParty(int cigars, boolean isWeekend) {

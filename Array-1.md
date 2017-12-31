@@ -1,3 +1,5 @@
+# Array-1
+
 ## firstLast6
 ```java
 public boolean firstLast6(int[] nums) {
