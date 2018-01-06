@@ -270,5 +270,194 @@ public boolean has77(int[] nums) {
 
 ## has12
 ```java
+public boolean has12(int[] nums) {
+  boolean thereIsOne = false;
+  
+  for(int n: nums) {
+    if(n == 2 && thereIsOne) return true;
+    if(n == 1) thereIsOne = true;
+  }
+  
+  return false;
+}
+```
+
+## modThree
+```java
+public boolean modThree(int[] nums) {
+  int countOdd = 0;
+  int countEven = 0;
+  
+  for(int n: nums) {
+    if(n % 2 != 0) {
+      countOdd++;
+      countEven = 0;
+    }
+    if(n % 2 == 0) {
+      countEven++;
+      countOdd = 0;
+    }
+    if(countOdd == 3 || countEven == 3) return true;
+  }
+  
+  return false;
+}
+```
+
+## haveThree
+```java
+public boolean haveThree(int[] nums) {
+  int count = 0;
+  boolean prevThree = false;
+  
+  for(int n: nums) {
+    if(n == 3) {
+      if(prevThree) return false;
+      prevThree = true;
+      count++;
+    } else {
+      prevThree = false;
+    }
+  }
+  
+  return count == 3;
+}
+```
+
+## twoTwo
+```java
+public boolean twoTwo(int[] nums) {
+  boolean firstTwo = false;
+  boolean secondTwo = true;
+  
+  for(int n: nums) {
+    if(n == 2) {
+      secondTwo = firstTwo ? true : false;
+      firstTwo = true;
+    } else {
+      firstTwo = false;
+    }
+  }
+  
+  return secondTwo;
+}
+```
+
+## sameEnds
+```java
+public boolean sameEnds(int[] nums, int len) {
+  return Arrays.equals(Arrays.copyOfRange(nums, 0, len),
+    Arrays.copyOfRange(nums, nums.length - len, nums.length));
+}
+```
+
+## tripleUp
+```java
+public boolean tripleUp(int[] nums) {
+  int count = 1;
+  
+  for(int i = 1; i < nums.length; i++) {
+    count = (nums[i] - nums[i-1] == 1) ? count + 1 : 1;
+    if(count == 3) return true;
+  }
+  
+  return false;
+}
+```
+
+## fizzArray3
+```java
+public int[] fizzArray3(int start, int end) {
+  int[] nums = new int[end-start];
+  
+  for(int i = 0; i < end-start; i++) {
+    nums[i] = start + i;
+  }
+  
+  return nums;
+}
+```
+
+## shiftLeft
+```java
+public int[] shiftLeft(int[] nums) {
+  int[] returnArray;
+  
+  if(nums.length > 0) {
+    int[] firstPartOfNums = Arrays.copyOfRange(nums, 1, nums.length);
+    returnArray = Arrays.copyOf(firstPartOfNums, nums.length);
+    returnArray[nums.length - 1] = nums[0];
+  } else {
+    returnArray = new int[0];
+  }
+  
+  return returnArray;
+}
+```
+
+## tenRun
+```java
+public int[] tenRun(int[] nums) {
+  boolean multipleOfTen = false;
+  int replace = 0;
+  for(int i = 0; i < nums.length; i++) {
+    if(nums[i] % 10 == 0) {
+      multipleOfTen = true;
+      replace = nums[i];
+    } else {
+      nums[i] = multipleOfTen ? replace : nums[i];
+    }
+  }
+  
+  return nums;
+}
+```
+
+## pre4
+```java
+public int[] pre4(int[] nums) {
+  int len = 0;
+  
+  for(int i = 0; i < nums.length; i++) {
+    if(nums[i] == 4) {
+      len = i;
+      break;
+    }
+  }
+  
+  return Arrays.copyOf(nums, len);
+}
+```
+
+## post4
+```java
+public int[] post4(int[] nums) {
+  int index = 0;
+  
+  for(int i = 0; i < nums.length; i++) {
+    index = nums[i] == 4 ? i : index;
+  }
+  
+  return Arrays.copyOfRange(nums, index + 1, nums.length);
+}
+```
+
+## notAlone
+```java
+public int[] notAlone(int[] nums, int val) {
+  for(int i = 0; i < nums.length; i++) {
+    if(i > 0 && i < nums.length - 1) {
+      nums[i] = (nums[i] == val && val != nums[i-1] && val != nums[i+1])
+        ? Math.max(nums[i-1], nums[i+1])
+        : nums[i];
+    }
+  }
+  
+  return nums;
+}
+```
+
+## zeroFront
+```java
 
 ```
