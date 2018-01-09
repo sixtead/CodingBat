@@ -459,5 +459,95 @@ public int[] notAlone(int[] nums, int val) {
 
 ## zeroFront
 ```java
+public int[] zeroFront(int[] nums) {
+  int not0index = -1;
+  
+  for(int i = 0; i < nums.length; i ++) {
+    if(not0index == -1 && nums[i] != 0) not0index = i;
+    if(nums[i] == 0 && not0index != i && not0index != -1) {
+      int tmp = nums[i];
+      nums[i] = nums[not0index];
+      nums[not0index] = tmp;
+      not0index++;
+    }
+  }
+  return nums;
+}
+```
 
+## withoutTen
+```java
+public int[] withoutTen(int[] nums) {
+  int[] returnArr = new int[nums.length];
+  int index = 0;
+  
+  for(int n: nums) {
+    if(n != 10) returnArr[index++] = n;
+  }
+  
+  return returnArr;
+}
+```
+
+## zeroMax
+```java
+public int[] zeroMax(int[] nums) {
+  
+  for(int i = 0; i < nums.length - 1; i++) {
+    if(nums[i] == 0) {
+      nums[i] = maxOddRightOfZero(nums, i);
+    }
+  }
+  
+  return nums;
+}
+
+public int maxOddRightOfZero(int[] arr, int index) {
+  int maxOdd = 0;
+  
+  for(int n: Arrays.copyOfRange(arr, index, arr.length)) {
+    if(n % 2 != 0) maxOdd = Math.max(maxOdd, n);
+  }
+  
+  return maxOdd;
+}
+```
+
+## evenOdd
+```java
+public int[] evenOdd(int[] nums) {
+  
+  for(int i = 0; i < nums.length - 1; i++) {
+    if(nums[i] % 2 != 0 && nums[i+1] % 2 == 0) {
+      int tmp = nums[i];
+      nums[i] = nums[i+1];
+      nums[i+1] = tmp;
+      i = -1;
+    }
+  }
+  
+  return nums;
+}
+```
+
+## fizzBuzz
+```java
+public String[] fizzBuzz(int start, int end) {
+  String[] nums = new String[end-start];
+  
+  for(int i = 0; i < end-start; i++) {
+    int num = i + start;
+    if(num % 3 == 0 && num % 5 == 0) {
+      nums[i] = "FizzBuzz";
+    } else if(num % 3 == 0) {
+      nums[i] = "Fizz";
+    } else if(num % 5 == 0) {
+      nums[i] = "Buzz";
+    } else {
+      nums[i] = String.valueOf(num);
+    }
+  }
+  
+  return nums;
+}
 ```
