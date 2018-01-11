@@ -492,24 +492,14 @@ public int[] withoutTen(int[] nums) {
 ## zeroMax
 ```java
 public int[] zeroMax(int[] nums) {
+  int maxOdd = 0;
   
-  for(int i = 0; i < nums.length - 1; i++) {
-    if(nums[i] == 0) {
-      nums[i] = maxOddRightOfZero(nums, i);
-    }
+  for(int i = nums.length - 1; i >= 0; i--) {
+    if(nums[i] == 0) nums[i] = maxOdd;
+    if(nums[i] % 2 != 0) maxOdd = Math.max(nums[i], maxOdd);
   }
   
   return nums;
-}
-
-public int maxOddRightOfZero(int[] arr, int index) {
-  int maxOdd = 0;
-  
-  for(int n: Arrays.copyOfRange(arr, index, arr.length)) {
-    if(n % 2 != 0) maxOdd = Math.max(maxOdd, n);
-  }
-  
-  return maxOdd;
 }
 ```
 
