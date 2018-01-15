@@ -97,5 +97,36 @@ public boolean linearIn(int[] outer, int[] inner) {
 
 ## squareUp
 ```java
+public int[] squareUp(int n) {
+  int[] nums = new int[n*n];
+    
+  for(int i = n-1; i >= 0; i--) {
+    for(int j = n-i-1; j < n; j++) {
+      nums[n*i + j] = n-j;
+    }
+  }
+  
+  return nums;
+}
+```
+
+## seriesUp
+```java
+public int[] seriesUp(int n) {
+  int index = 0;
+  int[] nums = new int[n*(n+1)/2];
+  
+  for(int i = 0; i < n; i++) {
+    for(int j = 0; j <= i; j++) {
+      nums[index++] = j + 1;
+    }
+  }
+  
+  return nums;
+}
+```
+
+## 
+```java
 
 ```
