@@ -126,7 +126,55 @@ public int[] seriesUp(int n) {
 }
 ```
 
-## 
+## maxMirror
 ```java
+public int maxMirror(int[] nums) {
+  int count = 0;
+  int maxCount = 0;
+  boolean matchFound = false;
 
+  for(int i = 0; i < nums.length; i++) {
+    matchFound = false;
+    for(int j = nums.length - 1; j >= 0; j--) {
+      if(count == 0 && nums[i] == nums[j]) {
+        if(!matchFound) {
+          count = 1;
+          matchFound = true;
+        }
+      } else if(i > 0 && j < nums.length - 1
+                && nums[i] == nums[j] && nums[i-1] == nums[j+1]) {
+          if(!matchFound) {
+            count++;
+            matchFound = true;
+          }
+      }
+    }
+    maxCount = Math.max(maxCount, count);
+    if(!matchFound) {
+      count = 0;
+      i--;
+    }
+  }
+  return maxCount;
+}
+```
+
+## countClumps
+```java
+public int countClumps(int[] nums) {
+  int count = 0;
+  int clumps = 0;
+  
+  for(int i = 1; i < nums.length; i++) {
+    if(nums[i] == nums[i-1]) {
+      count++;
+    } else {
+      clumps = count > 0 ? clumps + 1 : clumps;
+      count = 0;
+    }
+  }
+  clumps = count > 0 ? clumps + 1 : clumps;
+  
+  return clumps;
+}
 ```
