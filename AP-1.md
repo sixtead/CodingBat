@@ -224,5 +224,117 @@ int largestSpecialScore(int[] scores) {
 
 ## sumHeights
 ```java
+public int sumHeights(int[] heights, int start, int end) {
+  int sum = 0;
+  
+  for(int i = start; i < end; i++) {
+    sum += (Math.abs(heights[i] - heights[i+1]));
+  }
+  
+  return sum;
+}
+```
 
+## sumHeights2
+```java
+public int sumHeights2(int[] heights, int start, int end) {
+  int sum = 0;
+  int heightChange = 0;
+  
+  for(int i = start; i < end; i++) {
+    heightChange = heights[i+1] - heights[i];
+    sum = (heightChange > 0) 
+      ? sum + heightChange * 2
+      : sum + Math.abs(heightChange);
+  }
+  
+  return sum;
+}
+```
+
+## bigHeights
+```java
+public int bigHeights(int[] heights, int start, int end) {
+  int count = 0;
+  
+  for(int i = start; i < end; i++) {
+    if(Math.abs(heights[i+1] - heights[i]) >= 5) {
+      count++;
+    }
+  }
+  
+  return count;
+}
+```
+
+## userCompare
+```java
+public int userCompare(String aName, int aId, String bName, int bId) {
+  if(aName.compareTo(bName) == 0) {
+    if(aId < bId) {
+      return -1;
+    } else if(aId == bId) {
+      return 0;
+    } else {
+      return 1;
+    }
+  }
+  return aName.compareTo(bName) < 0 ? -1 : 1;
+}
+```
+
+## mergeTwo
+```java
+public String[] mergeTwo(String[] a, String[] b, int n) {
+  String[] arr = new String[n];
+  int index = 0;
+  int indexOfA = 0;
+  int indexOfB = 0;
+  
+  while(index < n) {
+    if(a[indexOfA].compareTo(b[indexOfB]) < 0) {
+      arr[index++] = a[indexOfA++];
+    } else if(a[indexOfA].compareTo(b[indexOfB]) > 0){
+      arr[index++] = b[indexOfB++];
+    } else {
+      arr[index++] = a[indexOfA++];
+      indexOfB++;
+    }
+  }
+  
+  return arr;
+}
+```
+
+## commonTwo
+```java
+public int commonTwo(String[] a, String[] b) {
+  int count = 0;
+  int indexOfA = 0;
+  int indexOfB = 0;
+  String prevMatch = "";
+  
+  while(indexOfA < a.length && indexOfB < b.length) {
+    if(prevMatch.equals(a[indexOfA])) {
+      indexOfA++;
+      continue;
+    }
+    if(prevMatch.equals(b[indexOfB])) {
+      indexOfB++;
+      continue;
+    }
+    if(a[indexOfA].compareTo(b[indexOfB]) < 0) {
+      indexOfA++;
+    } else if(a[indexOfA].compareTo(b[indexOfB]) > 0) {
+      indexOfB++;
+    } else {
+      prevMatch = a[indexOfA];
+      count++;
+      indexOfA++;
+      indexOfB++;
+    }
+  }
+  
+  return count;
+}
 ```
