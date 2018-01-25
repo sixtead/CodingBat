@@ -242,5 +242,142 @@ public String endX(String str) {
 
 ## countPairs
 ```java
+public int countPairs(String str) {
+  if(str.length() < 3) {
+    return 0;
+  } else {
+    return str.charAt(0) == str.charAt(2)
+      ? 1 + countPairs(str.substring(1))
+      : countPairs(str.substring(1));
+  }
+}
+```
 
+## countAbc
+```java
+public int countAbc(String str) {
+  if(str.length() < 3) {
+    return 0;
+  } else {
+    if(str.startsWith("abc")) {
+      return 1 + countAbc(str.substring(3));
+    } else if(str.startsWith("aba")) {
+      return 1 + countAbc(str.substring(2));
+    } else {
+      return countAbc(str.substring(1));
+    }
+  }
+}
+```
+
+## count11
+```java
+public int count11(String str) {
+  if(str.length() < 2) {
+    return 0;
+  } else {
+    return str.startsWith("11")
+      ? 1 + count11(str.substring(2))
+      : count11(str.substring(1));
+  }
+}
+```
+
+## stringClean
+```java
+public String stringClean(String str) {
+  if(str.length() == 0) {
+    return str;
+  } else {
+    return str.substring(1).startsWith("" + str.charAt(0))
+      ? stringClean(str.substring(1))
+      : "" + str.charAt(0) + stringClean(str.substring(1));
+  }
+}
+```
+
+## countHi2
+```java
+public int countHi2(String str) {
+  if(str.length() < 2) {
+    return 0;
+  } else {
+    if(str.startsWith("xhi")) {
+      return countHi2(str.substring(3));
+    } else if(str.startsWith("hi")) {
+      return 1 + countHi2(str.substring(2));
+    } else {
+      return countHi2(str.substring(1));
+    }
+  }
+}
+```
+
+## parenBit
+```java
+public String parenBit(String str) {
+  if(str.startsWith("(") && str.endsWith(")")) {
+    return str;
+  } else {
+    return str.startsWith("(")
+      ? parenBit(str.substring(0, str.length() - 1))
+      : parenBit(str.substring(1));
+  }
+}
+```
+
+## nestParen
+```java
+public boolean nestParen(String str) {
+  if(str.length() == 0) {
+    return true;
+  } else {
+    return str.startsWith("(") && str.endsWith(")")
+      ? nestParen(str.substring(1, str.length() - 1))
+      : false;
+  }
+}
+```
+
+## strCount
+```java
+public int strCount(String str, String sub) {
+  if(str.length() < sub.length()) {
+    return 0;
+  } else {
+    return str.startsWith(sub)
+      ? 1 + strCount(str.substring(sub.length()), sub)
+      : strCount(str.substring(1), sub);
+  }
+}
+```
+
+## strCopies
+```java
+public boolean strCopies(String str, String sub, int n) {
+  if(n == 0) {
+    return true;
+  } else if(str.length() < sub.length()) {
+    return false;
+  } else {
+    return str.startsWith(sub)
+      ? strCopies(str.substring(1), sub, n - 1)
+      : strCopies(str.substring(1), sub, n);
+  }
+}
+```
+
+## strDist
+```java
+public int strDist(String str, String sub) {
+  if(str.length() < sub.length()) {
+    return 0;
+  } else if(str.startsWith(sub) && str.endsWith(sub)) {
+    return str.length();
+  } else {
+    return str.startsWith(sub)
+      ? strDist(str.substring(0, str.length() - 1), sub)
+      : strDist(str.substring(1), sub);
+  }
+}
 ```
