@@ -120,10 +120,42 @@ public Map<String, Boolean> wordMultiple(String[] strings) {
 
 ## allSwap
 ```java
+public String[] allSwap(String[] strings) {
+  Map<String, Integer> map = new HashMap<>();
+  
+  for(int i = 0; i < strings.length; i++) {
+    String key = strings[i].substring(0, 1);
+    if(!map.containsKey(key)) {
+      map.put(key, i);
+    } else {
+      String tmp = strings[i];
+      strings[i] = strings[map.get(key)];
+      strings[map.get(key)] = tmp;
+      map.remove(key);
+    }
+  }
 
+  return strings;
+}
 ```
 
 ## firstSwap
 ```java
+public String[] firstSwap(String[] strings) {
+  Map<String, Integer> map = new HashMap<>();
+  
+  for(int i = 0; i < strings.length; i++) {
+    String key = strings[i].substring(0, 1);
+    if(!map.containsKey(key)) {
+      map.put(key, i);
+    } else if(map.containsKey(key) && map.get(key) != -1) {
+      String tmp = strings[i];
+      strings[i] = strings[map.get(key)];
+      strings[map.get(key)] = tmp;
+      map.put(key, -1);
+    }
+  }
 
+  return strings;
+}
 ```
